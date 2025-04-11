@@ -294,6 +294,13 @@ function attachEventListeners() {
 
 // Modify DOMContentLoaded to set initial UI language and populate dropdowns
 document.addEventListener('DOMContentLoaded', async () => {
+  if (navigator.userAgent.toLowerCase().includes('firefox')) {
+    const warningDiv = document.getElementById('firefox-warning');
+    if (warningDiv) {
+      warningDiv.classList.remove('hide');
+    }
+  }
+
   // Load UI language preference
   let preferredLanguage = null;
   try {

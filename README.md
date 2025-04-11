@@ -1,6 +1,6 @@
 # PolyglotSync - Bilingual Book Generator
 
-**Live Website:** [https://julius-gun.github.io/PolyglotSync_Google_Translate_Book_Generator/](https://julius-gun.github.io/PolyglotSync_Google_Translate_Book_Generator/)
+ ## [**Live Website**](https://julius-gun.github.io/PolyglotSync_Google_Translate_Book_Generator/)
 
 Generate bilingual (or multilingual) books side-by-side from your source text using Google Translate.
 
@@ -33,3 +33,4 @@ Generate bilingual (or multilingual) books side-by-side from your source text us
 ## How it Works
 
 This tool splits the source text into sentences, merges short ones, and sends them in batches to the Google Translate API (`translate.googleapis.com`) for translation. The results are then displayed paragraph by paragraph in a multi-column layout. It uses client-side JavaScript, HTML, and CSS.
+

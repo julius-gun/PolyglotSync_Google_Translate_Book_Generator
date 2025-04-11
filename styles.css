@@ -1,261 +1,273 @@
 * {
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
-  }
-  
-  body {
-    color: rgb(53, 39, 0);
-    background-color: rgb(255, 234, 203);
-    font-family: Arial, sans-serif;
-  }
-  
-  .bw {
-    color: rgb(0, 0, 0);
-    background-color: rgb(255, 255, 255);
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Layout Styles */
-  .del {
-    padding: 20px;
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* Vertically align items in header */
-  }
-  
-  #language-selector-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  #sl-container,
-  #tl1-container,
-  #tl2-container,
-  #tl3-container,
-  #tl4-container {
-    margin-bottom: 10px;
-    /* Add Flexbox for alignment */
-    display: flex;
-    align-items: center;
-    /* Vertically center label, select, buttons */
-    gap: 5px;
-    /* Add small gap between items */
-  }
-  
-  /* Give labels a consistent space */
-  #sl-container label,
-  #tl1-container label,
-  #tl2-container label,
-  #tl3-container label,
-  #tl4-container label {
-    flex-basis: 150px;
-    /* Adjust this value as needed */
-    flex-shrink: 0;
-    /* Prevent label from shrinking */
-    /* Remove margin-right if using gap */
-    /* text-align: right; */
-    /* Optional: align text within the label space */
-  }
-  
-  /* Ensure selects don't take up excessive space if needed */
-  #sl-container select,
-  #tl1-container select,
-  #tl2-container select,
-  #tl3-container select,
-  #tl4-container select {
-    /* flex-grow: 1; */
-    /* Optional: allow select to grow */
-    /* max-width: 300px; */
-    /* Optional: limit select width */
-  }
-  
-  
-  .paragraph {
-    display: flex;
-    margin-bottom: 10px;
-  }
-  
-  .source,
-  .lang-column {
-    flex: 2;
-    /* Adjusted flex for potentially more columns */
-  }
-  
-  .source {
-    margin-right: 5px;
-  }
-  
-  .lang-column {
-    margin-left: 5px;
-  }
-  
-  /* Text Area and Output Styles */
-  textarea {
-    width: 100%;
-    height: 200px;
-    margin-bottom: 10px;
-    /* Add margin below textarea */
-  }
-  
-  #output {
-    padding: 20px;
-    margin-top: 20px;
-    background-color: #fff;
-    /* Example output background */
-    border: 1px solid #ccc;
-    /* Example output border */
-    border-radius: 5px;
-    /* Example output border radius */
-  }
-  
-  /* Theme and Color Styles */
-  #language-selector-container select {
-    background-color: #e0cba8;
-    /* Highlight color for UI language selector */
-    color: rgb(53, 39, 0);
-    border: 1px solid #b5722a;
-    border-radius: 5px;
-    padding: 8px;
-    cursor: pointer;
-  }
-  
-  
-  #info {
-    color: rgb(255, 246, 234);
-    position: absolute;
-    width: 90vw;
-    margin-top: 5vh;
-    margin-bottom: 5vh;
-    padding: 20px;
-    border-radius: 10px;
-    height: 90vh;
-    margin-right: 5vw;
-    margin-left: 5vw;
-    background-color: #b5722ac7;
-    box-shadow: 3px 3px 5px 2px #b08a2134;
-  }
-  
-  .rtl {
-    text-align: right;
-  }
-  
-  .hide {
-    display: none !important;
-  }
-  
-  /* Icon Styles */
-  .fa-solid {
-    font-size: 2rem;
-    margin-left: 10px;
-    /* Add some space for the icon if needed */
-  }
-  
-  
-  /* Info Box Styles */
-  #info>p {
-    margin-bottom: 0.8rem;
-  }
-  
-  p>a {
-    color: rgb(255, 240, 222);
-    text-decoration: underline;
-  }
-  
-  a:hover {
-    text-decoration: none;
-  }
-  
-  /* Button Styles */
-  button,
-  .add-lang-button {
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    background-color: #b5722a;
-    color: white;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s ease;
-  }
-  
-  button:hover,
-  .add-lang-button:hover {
-    background-color: #945c1e;
-  }
-  
-  .add-lang-button {
-    margin-left: 5px;
-    padding: 2px 6px;
-    font-size: 14px;
-    cursor: pointer;
-  }
-  
-  .remove-lang-button {
-    margin-left: 5px;
-    padding: 2px 6px;
-    font-size: 14px;
-    cursor: pointer;
-    background-color: #d32f2f;
-    /* Example red color for remove button */
-  }
-  
-  .remove-lang-button:hover {
-    background-color: #b71c1c;
-    /* Darker red on hover */
-  }
-  
-  
-  /* Progress Bar Styles */
-  #progress-container {
-    width: 100%;
-    background-color: #ddd;
-    border-radius: 5px;
-    /* Rounded progress bar */
-    overflow: hidden;
-    /* Ensure rounded corners are visible */
-    margin-bottom: 10px;
-    display: none;
-    /* Hidden initially */
-  }
-  
-  #progress-info {
-    display: none;
-    /* Hidden initially */
-    margin-bottom: 1em;
-    font-size: 0.9rem;
-    /* Slightly smaller progress info text */
-    color: #555;
-    /* Darker color for progress info text */
-  }
-  
-  
-  #progress-bar {
-    width: 0%;
-    height: 30px;
-    background-color: #4CAF50;
-    text-align: center;
-    line-height: 30px;
-    color: white;
-    border-radius: 5px;
-    /* Rounded progress bar */
-  }
-  
-  /* Style for the UI Language label and icon */
-  #ui-language-label {
-    display: flex;
-    align-items: center;
-    /* Vertically center the icon and text */
-    gap: 5px;
-    /* Space between icon and text */
-  }
-  
-  #ui-language-icon {
-    font-size: 1.2em;
-    /* Adjust icon size as needed */
-  }
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  color: rgb(53, 39, 0);
+  background-color: rgb(255, 234, 203);
+  font-family: Arial, sans-serif;
+}
+
+#firefox-warning {
+  background-color: #ffdddd;
+  border: 1px solid #f44336;
+  color: #a94442;
+  padding: 15px;
+  margin: 10px;
+  /* Add margin around the box */
+  text-align: center;
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
+.bw {
+  color: rgb(0, 0, 0);
+  background-color: rgb(255, 255, 255);
+  font-family: Arial, sans-serif;
+}
+
+/* Layout Styles */
+.del {
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* Vertically align items in header */
+}
+
+#language-selector-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#sl-container,
+#tl1-container,
+#tl2-container,
+#tl3-container,
+#tl4-container {
+  margin-bottom: 10px;
+  /* Add Flexbox for alignment */
+  display: flex;
+  align-items: center;
+  /* Vertically center label, select, buttons */
+  gap: 5px;
+  /* Add small gap between items */
+}
+
+/* Give labels a consistent space */
+#sl-container label,
+#tl1-container label,
+#tl2-container label,
+#tl3-container label,
+#tl4-container label {
+  flex-basis: 150px;
+  /* Adjust this value as needed */
+  flex-shrink: 0;
+  /* Prevent label from shrinking */
+  /* Remove margin-right if using gap */
+  /* text-align: right; */
+  /* Optional: align text within the label space */
+}
+
+/* Ensure selects don't take up excessive space if needed */
+#sl-container select,
+#tl1-container select,
+#tl2-container select,
+#tl3-container select,
+#tl4-container select {
+  /* flex-grow: 1; */
+  /* Optional: allow select to grow */
+  /* max-width: 300px; */
+  /* Optional: limit select width */
+}
+
+
+.paragraph {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.source,
+.lang-column {
+  flex: 2;
+  /* Adjusted flex for potentially more columns */
+}
+
+.source {
+  margin-right: 5px;
+}
+
+.lang-column {
+  margin-left: 5px;
+}
+
+/* Text Area and Output Styles */
+textarea {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 10px;
+  /* Add margin below textarea */
+}
+
+#output {
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #fff;
+  /* Example output background */
+  border: 1px solid #ccc;
+  /* Example output border */
+  border-radius: 5px;
+  /* Example output border radius */
+}
+
+/* Theme and Color Styles */
+#language-selector-container select {
+  background-color: #e0cba8;
+  /* Highlight color for UI language selector */
+  color: rgb(53, 39, 0);
+  border: 1px solid #b5722a;
+  border-radius: 5px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+
+#info {
+  color: rgb(255, 246, 234);
+  position: absolute;
+  width: 90vw;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  padding: 20px;
+  border-radius: 10px;
+  height: 90vh;
+  margin-right: 5vw;
+  margin-left: 5vw;
+  background-color: #b5722ac7;
+  box-shadow: 3px 3px 5px 2px #b08a2134;
+}
+
+.rtl {
+  text-align: right;
+}
+
+.hide {
+  display: none !important;
+}
+
+/* Icon Styles */
+.fa-solid {
+  font-size: 2rem;
+  margin-left: 10px;
+  /* Add some space for the icon if needed */
+}
+
+
+/* Info Box Styles */
+#info>p {
+  margin-bottom: 0.8rem;
+}
+
+p>a {
+  color: rgb(255, 240, 222);
+  text-decoration: underline;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+/* Button Styles */
+button,
+.add-lang-button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #b5722a;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+button:hover,
+.add-lang-button:hover {
+  background-color: #945c1e;
+}
+
+.add-lang-button {
+  margin-left: 5px;
+  padding: 2px 6px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.remove-lang-button {
+  margin-left: 5px;
+  padding: 2px 6px;
+  font-size: 14px;
+  cursor: pointer;
+  background-color: #d32f2f;
+  /* Example red color for remove button */
+}
+
+.remove-lang-button:hover {
+  background-color: #b71c1c;
+  /* Darker red on hover */
+}
+
+
+/* Progress Bar Styles */
+#progress-container {
+  width: 100%;
+  background-color: #ddd;
+  border-radius: 5px;
+  /* Rounded progress bar */
+  overflow: hidden;
+  /* Ensure rounded corners are visible */
+  margin-bottom: 10px;
+  display: none;
+  /* Hidden initially */
+}
+
+#progress-info {
+  display: none;
+  /* Hidden initially */
+  margin-bottom: 1em;
+  font-size: 0.9rem;
+  /* Slightly smaller progress info text */
+  color: #555;
+  /* Darker color for progress info text */
+}
+
+
+#progress-bar {
+  width: 0%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+  border-radius: 5px;
+  /* Rounded progress bar */
+}
+
+/* Style for the UI Language label and icon */
+#ui-language-label {
+  display: flex;
+  align-items: center;
+  /* Vertically center the icon and text */
+  gap: 5px;
+  /* Space between icon and text */
+}
+
+#ui-language-icon {
+  font-size: 1.2em;
+  /* Adjust icon size as needed */
+}
