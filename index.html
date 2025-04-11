@@ -1,162 +1,103 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.6.0/jszip.min.js"></script>
   <title>Bilingual Book Generator</title>
-  <style>
-    * {
-      margin: 0px;
-      padding: 0px;
-      box-sizing: border-box;
-    }
-    body {
-      color: rgb(53, 39, 0);
-      background-color: rgb(255, 234, 203);
-      font-family: Arial, sans-serif;
-    }
-    .bw {
-      color: rgb(0, 0, 0);
-      background-color: rgb(255, 255, 255);
-      font-family: Arial, sans-serif;
-    }
-    .paragraph {
-      display: flex;
-      margin-bottom: 10px;
-    }
-    .source,
-    .english {
-      flex: 1;
-    }
-    .source {
-      margin-right: 5px;
-    }
-    .english {
-      margin-left: 5px;
-    }
-    textarea {
-      width: 100%;
-    }
-    #source-text {
-      height: 200px;
-    }
-    #output {
-      padding: 20px;
-      margin-top: 20px;
-    }
-
-    #info {
-      color: rgb(255, 246, 234);
-      position: absolute;
-      width: 90vw;
-      margin-top: 5vh;
-      margin-bottom: 5vh;
-      padding: 20px;
-      border-radius: 10px;
-      height: 90vh;
-      margin-right: 5vw;
-      margin-left: 5vw;
-      background-color: #b5722ac7;
-      box-shadow: 3px 3px 5px 2px #b08a2134;
-    }
-
-    .rtl {
-      text-align: right;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    .hide {
-      display: none !important;
-    }
-
-    .fa-solid {
-      font-size: 2rem;
-    }
-
-    #info > p {
-      margin-bottom: 0.8rem;
-    }
-
-    .del {
-      padding: 20px;
-    }
-
-    p > a {
-      color: rgb(255, 240, 222);
-      text-decoration: underline;
-    }
-
-    /* Remove underline on hover */
-    a:hover {
-      text-decoration: none;
-    }
-
-  </style>
-  <script src="https://kit.fontawesome.com/ed98a6bd6b.js" crossorigin="anonymous"></script>
+  <!-- Removed style block -->
+  <link rel="stylesheet" href="styles.css"> <!-- Added link to external CSS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-HP6ZDS0E04"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
 
     gtag('config', 'G-HP6ZDS0E04');
   </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+  <script src="translations.js" defer></script> <!--  Include translations  -->
+  <script src="languages.js" defer></script> <!-- Include language data -->
   <script src="main.js" defer></script>
 </head>
+
 <body>
-  <div id="info" class="">
-    <header><h2>Information</h2><i class="fa-solid fa-circle-xmark" onclick="toggleInfo();" style="font-size: 1.5rem;"></i></header>
-    <br>
-    <h2>Step 1: Find the source text</h2>
-    <p>The program will break each line by full stops rather than paragraphs or other punctionation so keep that in mind. Click <u onClick="copy()">here</u> to copy the first page of Harry Potter to show how to formated correctly and to demonstrate the generator</p>
-    
-    <h2>Step 2: Select Source and Target Languages</h2>
-    <p>Find the text areas labeled "Enter the code of your source language" and "Enter the code of your target language." In the first text area, enter the language code of the source language (e.g., "fr" for French). In the second text area, enter the language code of the target language (e.g., "en" for English).</p>
-    
-    <h2>Step 3: Input Source Text</h2>
-    <p>Below the language code text areas, there is a text area labeled "Enter source text." Type or paste the source text you want to translate and generate a bilingual book from.</p>
-    
-    <h2>Step 4: Generate Bilingual Book</h2>
-    <p>Click the "Generate Book" button to start the translation and book generation process.</p>
-    
-    <h2>Step 5: Wait for Translation</h2>
-    <p>The application will begin translating the source text paragraph by paragraph into the target language. Each paragraph will display the original source text on the left and the translated text on the right.</p>
-    
-    <h2>Step 6: View Bilingual Book</h2>
-    <p>As the application processes the paragraphs, a bilingual book will be generated on the screen. The left side of each paragraph will show the source text in the source language, and the right side will display the translated text in the target language.</p>
-        
-    <h2>Step 7: Download the Epub</h2>
-    <p>There will be a button to download the Epub that will appear 5 seconds after the book is done generating</p>
-    
-    <h2>Step 8: Save as PDF</h2>
-    <ul>
-    <p>Once the bilingual book is fully generated and displayed on the screen, press <kbd>Ctrl + P</kbd> (Windows) or <kbd>Command + P</kbd> (Mac) to open the print dialog.</p>
-    <p>In the print dialog, select the printer as "Save as PDF" or a similar option.</p>
-    <p>Adjust any print settings you desire, such as page orientation, margins, and more. I suggest setting margins to 0</p>
-    <p>Click the "Save" or "Print" button to save the bilingual book as a PDF file on your computer.</p>
-    <br>
-    <p>Click <a href="./animal-farm-en-fr.html">here</a> for an example of a finish book.</p>
-    <p> And click <a href="./animal-farm-en-fr.pdf">here</a> for an example of a finished book in pdf form.</p>
-    <br>
-    <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="lachydauth" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
-  </div>
   <div class="del">
     <header>
       <h1>Bilingual Book Generator</h1>
-      <i class="fa-solid fa-circle-question" id="info-button" onclick="toggleInfo()"></i>
+      <div id="language-selector-container">
+        <!-- ADD GITHUB LINK HERE -->
+        <a href="https://github.com/julius-gun/PolyglotSync_Google_Translate_Book_Generator" target="_blank" rel="noopener noreferrer" id="github-link" aria-label="View source on GitHub" style="text-decoration: none; color: inherit; margin-right: 10px;">
+            <i class="fa-brands fa-github" style="font-size: 1.8rem; vertical-align: middle;"></i>
+        </a>
+        <label id="ui-language-label" for="ui-language-selector">
+          <span id="ui-language-icon">🌐</span>
+          <span>UI Language:</span> <!-- Initial text, updated by JS -->
+        </label>
+        <!-- UI Language selector will be added here by JavaScript -->
+      </div>
     </header>
-    <textarea id="sl" placeholder="Enter the code of your source language eg fr..."></textarea>
-    <textarea id="tl" placeholder="Enter the code of your target language eg en..."></textarea>
+    <div id="sl-container">
+      <label for="sl">Source Language:</label> <!--This will be translated-->
+      <select id="sl"></select>
+    </div>
+
+    <div id="tl1-container">
+      <label for="tl1">Target Language 1:</label> <!--This will be translated-->
+      <select id="tl1"></select>
+      <button class="add-lang-button" onclick="showTargetLang('tl2-container')">+</button>
+    </div>
+
+    <div id="tl2-container" class="hide">
+      <label for="tl2">Target Language 2:</label> <!--This will be translated-->
+      <select id="tl2"></select>
+      <button class="add-lang-button" onclick="showTargetLang('tl3-container')">+</button>
+      <button class="remove-lang-button" onclick="hideTargetLang('tl2-container')">-</button>
+      <!-- Added remove button -->
+    </div>
+
+    <div id="tl3-container" class="hide">
+      <label for="tl3">Target Language 3:</label> <!--This will be translated-->
+      <select id="tl3"></select>
+      <button class="add-lang-button" onclick="showTargetLang('tl4-container')">+</button>
+      <button class="remove-lang-button" onclick="hideTargetLang('tl3-container')">-</button>
+      <!-- Added remove button -->
+    </div>
+
+    <div id="tl4-container" class="hide">
+      <label for="tl4">Target Language 4:</label> <!--This will be translated-->
+      <select id="tl4"></select>
+      <button class="remove-lang-button" onclick="hideTargetLang('tl4-container')">-</button>
+      <!-- Added remove button -->
+    </div>
+
+    <br>
     <h3>Enter source text:</h3>
     <textarea id="source-text" placeholder="Enter your source text here..."></textarea>
-    <button onclick="generateBilingualBook()">Generate Book</button> <button onclick="toggleTheme()">Toggle Theme</button>
+    <button id="generate-button">Generate Book</button>
+    <button id="toggle-theme-button">Toggle Theme</button>
+    <!-- Moved Post-Translation Buttons Here -->
+    <button id="open-book-view-button" class="hide" style="margin-left: 10px;">Open in Book-View</button>
+    <button id="save-epub-button" class="hide" style="margin-left: 5px;">Save as EPUB</button>
+    <button id="reload-page-button" class="hide" style="margin-left: 5px;">Reload Page</button>
+
+    <!-- Progress Bar -->
+    <div id="progress-container" style="margin-top: 20px;"> <!-- Added margin-top for spacing -->
+      <div id="progress-bar">0%</div>
+    </div>
+    <div id="progress-info">
+      <span>Translated: 0 / 0</span> | <!--This will be translated-->
+      <span>ETA: Calculating...</span> <!--This will be translated-->
+    </div>
+    <!-- Moved Translation Finished Message Here -->
+    <div id="translation-finished-message" class="hide" style="margin-top: 10px; font-weight: bold;">Translation process
+      over.</div>
   </div>
   <div id="output"></div>
+
 </body>
+
 </html>
