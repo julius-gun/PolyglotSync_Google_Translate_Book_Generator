@@ -19,12 +19,22 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
-  <!-- Updated path for translations.js -->
-  <script src="assets/translations.js" defer></script>
-  <!-- Updated path for languages.js -->
-  <script src="assets/languages.js" defer></script>
-  <!-- main.js path remains the same as it's relative to index.html -->
-  <script src="main.js" defer></script>
+
+  <!-- Updated JS paths and order -->
+  <!-- Data and Config first -->
+  <script src="assets/config.js" defer></script>
+  <script src="assets/language_data.js" defer></script>
+  <script src="assets/ui_translations.js" defer></script>
+  <!-- Utilities and API -->
+  <script src="assets/translation_utils.js" defer></script>
+  <script src="assets/translation_api.js" defer></script>
+  <script src="assets/epub_generator.js" defer></script>
+  <!-- UI Logic -->
+  <script src="assets/ui.js" defer></script>
+  <!-- Main orchestration script last -->
+  <script src="assets/main.js" defer></script>
+
+  <!-- Removed old script tags for languages.js and translations.js -->
 </head>
 
 <body>

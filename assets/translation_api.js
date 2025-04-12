@@ -1,30 +1,4 @@
-const translations = {
-    en: {
-        pageTitle: 'PolyglotSync - Google Translate Book Generator',
-        sourceLabel: 'Source Language:',
-        targetLabel1: 'Target Language 1:',
-        targetLabel2: 'Target Language 2:',
-        targetLabel3: 'Target Language 3:',
-        targetLabel4: 'Target Language 4:',
-        enterText: 'Enter your source text here...',
-        generateButton: 'Generate Book',
-        toggleThemeButton: 'Toggle Theme',
-        translated: 'Translated',
-        eta: 'ETA',
-        translationError: 'Translation Error',
-        uiLanguage: 'UI Language',
-        openBookViewButton: 'Open in Book-View',
-        saveEpubButton: 'Save as EPUB',
-        reloadPageButton: 'Delete',
-        translationFinishedMessage: 'Translation process over.',
-        enterSourceTextLabel: 'Enter source text:', // Added translation for "Enter source text:"
-        languages: { // Only keep keys needed for translation lookup
-            'auto': 'Autodetect Language'
-        }
-    },
-    // Other languages would go here...
-};
-
+// Contains functions for interacting with the translation API and cookies
 
 function getCookie(name) {
   const value = `; ${document.cookie}`;
@@ -57,7 +31,7 @@ async function detectLanguage(text) {
 
 async function fetchTranslation(text, targetLang) {
   // --- Add check for 'Autodetect Language' specifically ---
-  // Accesses the global 'translations' object defined in this file
+  // Accesses the global 'translations' object defined in ui_translations.js
   if (text === translations['en'].languages['auto'] && targetLang === 'en') {
       return translations['en'].languages['auto']; // Return the English version directly
   }
@@ -68,7 +42,7 @@ async function fetchTranslation(text, targetLang) {
   const sourceLang = 'en';
   // Use a more robust key for caching, handling potential special characters
   const cacheKey = `ui_translation_${targetLang}_${encodeURIComponent(text)}`;
-  // Uses getCookie (moved to this file)
+  // Uses getCookie (defined above)
   const cachedTranslation = getCookie(cacheKey);
 
   if (cachedTranslation) {
@@ -78,7 +52,7 @@ async function fetchTranslation(text, targetLang) {
     } catch (e) {
         console.warn("Could not decode cached translation, fetching again.", e);
         // Clear the potentially corrupted cookie
-        // Uses setCookie (moved to this file)
+        // Uses setCookie (defined above)
         setCookie(cacheKey, '', -1); // Set expiry in the past to delete
     }
   }
@@ -89,7 +63,7 @@ async function fetchTranslation(text, targetLang) {
     const data = await response.json();
     const translatedText = data[0][0][0];
     // Encode the translation before storing in cookie
-    // Uses setCookie (moved to this file)
+    // Uses setCookie (defined above)
     setCookie(cacheKey, encodeURIComponent(translatedText));
     return translatedText;
   } catch (error) {
@@ -122,7 +96,7 @@ async function translateBatch(batch, sourceLang, targetLangs, currentUiLang) {
     } catch (error) {
       console.error('Translation error:', error);
       // Use the passed currentUiLang parameter to get the correct error message
-      // Accesses the global 'translations' object defined in this file
+      // Accesses the global 'translations' object defined in ui_translations.js
       const errorMsg = translations[currentUiLang]?.translationError || translations['en'].translationError; //Fallback to english if currentUiLang is not loaded yet.
       translationsResult[targetLang] = batch.map(() => errorMsg);
     }
