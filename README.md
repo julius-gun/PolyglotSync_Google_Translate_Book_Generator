@@ -35,3 +35,6 @@ Generate bilingual (or multilingual) books side-by-side from your source text us
 This tool splits the source text into sentences, merges short ones, and sends them in batches to the Google Translate API (`translate.googleapis.com`) for translation. The results are then displayed paragraph by paragraph in a multi-column layout. It uses client-side JavaScript, HTML, and CSS.
 
 ![Application Workflow Diagram](assets/code_diagram.jpg)
+## Credits
+
+This project is a fork of the original [bilingual-books](https://github.com/Lachy-Dauth/bilingual-books) repository repository.
